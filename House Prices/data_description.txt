@@ -1,0 +1,608 @@
+| columns       | /           | /                                                                                       |
+| :------------ | :---------- | :-------------------------------------------------------------------------------------- |
+| MSSubClass    | 住宅類型        | Identifies the type of dwelling involved in the sale                                    |
+| MSZoning      | 地段分區        | Identifies the general zoning classification of the sale                                |
+| LotFrontage   | 距離街道距離      | Linear feet of street connected to property                                           |
+| LotArea       | 地坪          | Lot size in square feet                                                                 |
+| Street        | 街道類型        | Type of road access to property                                                         |
+| Alley         | 小巷類型        | Type of alley access to property                                                        |
+| LotShape      | 土地形狀        | General shape of property                                                               |
+| LandContour   | 土地平坦程度      | Flatness of the property                                                              |
+| Utilities     | 能源使用        | Type of utilities available                                                             |
+| LotConfig     | 配置方式        | Lot configuration                                                                       |
+| LandSlope     | 物業斜度        | Slope of property                                                                       |
+| Neighborhood  | 地理位置        | Physical locations within Ames city limits                                              |
+| Condition1    | 條件1         | Proximity to various conditions                                                         |
+| Condition2    | 條件2         | Proximity to various conditions (if more than one is present)                           |
+| BldgType      | 住宅類型        | Type of dwelling                                                                        |
+| HouseStyle    | 住宅風格        | Style of dwelling                                                                       |
+| OverallQual   | 綜合材料評分      | Rates the overall material and finish of the house                                    |
+| OverallCond   | 綜合評分        | Rates the overall condition of the house                                                |
+| YearBuilt     | 原始施工日期      | Original construction date                                                            |
+| YearRemodAdd  | 改建日期        | (無改建同上YearBuilt) Remodel date (same as construction date if no remodeling or additions) |
+| RoofStyle     | 屋頂造型        | Type of roof                                                                            |
+| RoofMatl      | 屋頂材料        | Roof material                                                                           |
+| Exterior1st   | 外牆材料1       | Exterior covering on house                                                              |
+| Exterior2nd   | 外牆材料2       | Exterior covering on house (if more than one material)                                  |
+| MasVnrType    | 裝飾類型        | Masonry veneer type                                                                     |
+| MasVnrArea    | 貼磁磚面積       | Masonry veneer area in square feet                                                      |
+| ExterQual     | 評估外部材料質量    | Evaluates the quality of the material on the exterior                                   |
+| ExterCond     | 外部材料當前情況    | Evaluates the present condition of the material on the exterior                         |
+| Foundation    | 房屋基礎材料      | Type of foundation                                                                      |
+| BsmtQual      | 地下室高度       | Evaluates the height of the basement                                                    |
+| BsmtCond      | 地下室情況評估     | Evaluates the general condition of the basement                                         |
+| BsmtExposure  | 花園牆壁材料      | Refers to walkout or garden level walls                                                 |
+| BsmtFinType1  | 地下室完成區域的等級1 | Rating of basement finished area                                                        |
+| BsmtFinSF1    | 地下室完成坪數1    | Type 1 finished square feet                                                             |
+| BsmtFinType2  | 地下室完成區域的等級2 | Rating of basement finished area (if multiple types)                                    |
+| BsmtFinSF2    | 地下室完成坪數2    | Type 2 finished square feet                                                             |
+| BsmtUnfSF     | 地下室未完成坪數    | Unfinished square feet of basement area                                                 |
+| TotalBsmtSF   | 地下室總面積      | Total square feet of basement area                                                      |
+| Heating       | 加熱設備形式      | Type of heating                                                                         |
+| HeatingQC     | 加熱設備品質      | Heating quality and condition                                                           |
+| CentralAir    | 中央空調        | Central air conditioning                                                                |
+| Electrical    | 電氣系統        | Electrical system                                                                       |
+| 1stFlrSF      | 一樓坪數        | First Floor square feet                                                                 |
+| 2ndFlrSF      | 二樓坪數        | Second floor square feet                                                                |
+| LowQualFinSF  | 低品質的總坪數     | Low quality finished square feet (all floors)                                           |
+| GrLivArea     | 地上的屋內坪數     | Above grade (ground) living area square feet                                            |
+| BsmtFullBath  | 地下室完整浴室     | Basement full bathrooms                                                                 |
+| BsmtHalfBath  | 地下室半浴室      | Basement half bathrooms                                                                 |
+| FullBath      | 完整浴室        | Full bathrooms above grade                                                              |
+| HalfBath      | 半浴室         | Half baths above grade                                                                  |
+| BedroomAbvGr  | 地上房間        | Bedrooms above grade (does NOT include basement bedrooms)                               |
+| KitchenAbvGr  | 地上廚房        | Kitchens above grade                                                                    |
+| KitchenQual   | 廚房品質        | Kitchen quality                                                                         |
+| TotRmsAbvGrd  | 地上客房        | Total rooms above grade (does not include bathrooms)                                    |
+| Functional    | 居家功能        | Home functionality (Assume typical unless deductions are warranted)                     |
+| Fireplaces    | 壁爐數量        | Number of fireplaces                                                                    |
+| FireplaceQu   | 壁爐質量        | Fireplace quality                                                                       |
+| GarageType    | 車庫位置        | Garage location                                                                         |
+| GarageYrBlt   | 車庫建成年份      | Year garage was built                                                                   |
+| GarageFinish  | 車庫內部裝飾      | Interior finish of the garage                                                           |
+| GarageCars    | 車庫容量        | Size of garage in car capacity                                                          |
+| GarageArea    | 車庫坪數        | Size of garage in square feet                                                           |
+| GarageQual    | 車庫質量        | Garage quality                                                                          |
+| GarageCond    | 車庫條件        | Garage condition                                                                        |
+| PavedDrive    | 車道材質        | Paved driveway                                                                          |
+| WoodDeckSF    | 木地板面積       | Wood deck area in square feet                                                           |
+| OpenPorchSF   | 開放陽台面積      | Open porch area in square feet                                                          |
+| EnclosedPorch | 封閉門廊面積      | Enclosed porch area in square feet                                                      |
+| 3SsnPorch     | 開放門廊面積      | Three season porch area in square feet                                                  |
+| ScreenPorch   | 屏幕門廊面積      | Screen porch area in square feet                                                        |
+| PoolArea      | 泳池面積        | Pool area in square feet                                                                |
+| PoolQC        | 泳池品質        | Pool quality                                                                            |
+| Fence         | 圍欄質量        | Fence quality                                                                           |
+| MiscFeature   | 其他功能        | Miscellaneous feature not covered in other categories                                   |
+| MiscVal       | 雜項功能        | $Value of miscellaneous feature                                                         |
+| MoSold        | 售出月份        | Month Sold (MM)                                                                         |
+| YrSold        | 售出年份        | Year Sold (YYYY)                                                                        |
+| SaleType      | 銷售方式        | Type of sale                                                                            |
+| SaleCondition | 銷售條件        | Condition of sale                                                                       |
+
+
+####################################################################################################################################################################################
+
+MSSubClass: 住宅類型 Identifies the type of dwelling involved in the sale.	
+
+        20	1-STORY 1946 & NEWER ALL STYLES
+        30	1-STORY 1945 & OLDER
+        40	1-STORY W/FINISHED ATTIC ALL AGES
+        45	1-1/2 STORY - UNFINISHED ALL AGES
+        50	1-1/2 STORY FINISHED ALL AGES
+        60	2-STORY 1946 & NEWER
+        70	2-STORY 1945 & OLDER
+        75	2-1/2 STORY ALL AGES
+        80	SPLIT OR MULTI-LEVEL
+        85	SPLIT FOYER
+        90	DUPLEX - ALL STYLES AND AGES
+       120	1-STORY PUD (Planned Unit Development) - 1946 & NEWER
+       150	1-1/2 STORY PUD - ALL AGES
+       160	2-STORY PUD - 1946 & NEWER
+       180	PUD - MULTILEVEL - INCL SPLIT LEV/FOYER
+       190	2 FAMILY CONVERSION - ALL STYLES AND AGES
+
+MSZoning: 地段分區 Identifies the general zoning classification of the sale.
+		
+       A	Agriculture
+       C	Commercial
+       FV	Floating Village Residential
+       I	Industrial
+       RH	Residential High Density
+       RL	Residential Low Density
+       RP	Residential Low Density Park 
+       RM	Residential Medium Density
+	
+LotFrontage: 距離街道距離 Linear feet of street connected to property
+
+LotArea: 地坪 Lot size in square feet
+
+Street: 街道類型 Type of road access to property
+
+       Grvl	Gravel	
+       Pave	Paved
+       	
+Alley: 小巷類型 Type of alley access to property
+
+       Grvl	Gravel
+       Pave	Paved
+       NA 	No alley access
+		
+LotShape: 土地形狀 General shape of property
+
+       Reg	Regular	
+       IR1	Slightly irregular
+       IR2	Moderately Irregular
+       IR3	Irregular
+       
+LandContour: 土地平坦程度 Flatness of the property
+
+       Lvl	Near Flat/Level	
+       Bnk	Banked - Quick and significant rise from street grade to building
+       HLS	Hillside - Significant slope from side to side
+       Low	Depression
+		
+Utilities: 能源使用 Type of utilities available
+		
+       AllPub	All public Utilities (E,G,W,& S)	
+       NoSewr	Electricity, Gas, and Water (Septic Tank)
+       NoSeWa	Electricity and Gas Only
+       ELO	Electricity only	
+	
+LotConfig: 配置方式 Lot configuration
+
+       Inside	Inside lot
+       Corner	Corner lot
+       CulDSac	Cul-de-sac
+       FR2	Frontage on 2 sides of property
+       FR3	Frontage on 3 sides of property
+	
+LandSlope: 物業斜度 Slope of property
+		
+       Gtl	Gentle slope
+       Mod	Moderate Slope	
+       Sev	Severe Slope
+	
+Neighborhood: 地理位置 Physical locations within Ames city limits
+
+       Blmngtn	Bloomington Heights
+       Blueste	Bluestem
+       BrDale	Briardale
+       BrkSide	Brookside
+       ClearCr	Clear Creek
+       CollgCr	College Creek
+       Crawfor	Crawford
+       Edwards	Edwards
+       Gilbert	Gilbert
+       IDOTRR	Iowa DOT and Rail Road
+       MeadowV	Meadow Village
+       Mitchel	Mitchell
+       Names	North Ames
+       NoRidge	Northridge
+       NPkVill	Northpark Villa
+       NridgHt	Northridge Heights
+       NWAmes	Northwest Ames
+       OldTown	Old Town
+       SWISU	South & West of Iowa State University
+       Sawyer	Sawyer
+       SawyerW	Sawyer West
+       Somerst	Somerset
+       StoneBr	Stone Brook
+       Timber	Timberland
+       Veenker	Veenker
+			
+Condition1: 條件1 Proximity to various conditions
+	
+       Artery	Adjacent to arterial street
+       Feedr	Adjacent to feeder street	
+       Norm	Normal	
+       RRNn	Within 200' of North-South Railroad
+       RRAn	Adjacent to North-South Railroad
+       PosN	Near positive off-site feature--park, greenbelt, etc.
+       PosA	Adjacent to postive off-site feature
+       RRNe	Within 200' of East-West Railroad
+       RRAe	Adjacent to East-West Railroad
+	
+Condition2: 條件2 Proximity to various conditions (if more than one is present)
+		
+       Artery	Adjacent to arterial street
+       Feedr	Adjacent to feeder street	
+       Norm	Normal	
+       RRNn	Within 200' of North-South Railroad
+       RRAn	Adjacent to North-South Railroad
+       PosN	Near positive off-site feature--park, greenbelt, etc.
+       PosA	Adjacent to postive off-site feature
+       RRNe	Within 200' of East-West Railroad
+       RRAe	Adjacent to East-West Railroad
+	
+BldgType: 住宅類型 Type of dwelling
+		
+       1Fam	Single-family Detached	
+       2FmCon	Two-family Conversion; originally built as one-family dwelling
+       Duplx	Duplex
+       TwnhsE	Townhouse End Unit
+       TwnhsI	Townhouse Inside Unit
+	
+HouseStyle: 住宅風格 Style of dwelling
+	
+       1Story	One story
+       1.5Fin	One and one-half story: 2nd level finished
+       1.5Unf	One and one-half story: 2nd level unfinished
+       2Story	Two story
+       2.5Fin	Two and one-half story: 2nd level finished
+       2.5Unf	Two and one-half story: 2nd level unfinished
+       SFoyer	Split Foyer
+       SLvl	Split Level
+	
+OverallQual: 綜合材料評分 Rates the overall material and finish of the house
+
+       10	Very Excellent
+       9	Excellent
+       8	Very Good
+       7	Good
+       6	Above Average
+       5	Average
+       4	Below Average
+       3	Fair
+       2	Poor
+       1	Very Poor
+	
+OverallCond: 綜合評分 Rates the overall condition of the house
+
+       10	Very Excellent
+       9	Excellent
+       8	Very Good
+       7	Good
+       6	Above Average	
+       5	Average
+       4	Below Average	
+       3	Fair
+       2	Poor
+       1	Very Poor
+		
+YearBuilt: 原始施工日期 Original construction date
+
+YearRemodAdd: 改建日期(無改建同上YearBuilt) Remodel date (same as construction date if no remodeling or additions)
+
+RoofStyle: 屋頂造型 Type of roof
+
+       Flat	Flat
+       Gable	Gable
+       Gambrel	Gabrel (Barn)
+       Hip	Hip
+       Mansard	Mansard
+       Shed	Shed
+		
+RoofMatl: 屋頂材料 Roof material
+
+       ClyTile	Clay or Tile
+       CompShg	Standard (Composite) Shingle
+       Membran	Membrane
+       Metal	Metal
+       Roll	Roll
+       Tar&Grv	Gravel & Tar
+       WdShake	Wood Shakes
+       WdShngl	Wood Shingles
+		
+Exterior1st: 外牆材料1 Exterior covering on house
+
+       AsbShng	Asbestos Shingles
+       AsphShn	Asphalt Shingles
+       BrkComm	Brick Common
+       BrkFace	Brick Face
+       CBlock	Cinder Block
+       CemntBd	Cement Board
+       HdBoard	Hard Board
+       ImStucc	Imitation Stucco
+       MetalSd	Metal Siding
+       Other	Other
+       Plywood	Plywood
+       PreCast	PreCast	
+       Stone	Stone
+       Stucco	Stucco
+       VinylSd	Vinyl Siding
+       Wd Sdng	Wood Siding
+       WdShing	Wood Shingles
+	
+Exterior2nd: 外牆材料2 Exterior covering on house (if more than one material)
+
+       AsbShng	Asbestos Shingles
+       AsphShn	Asphalt Shingles
+       BrkComm	Brick Common
+       BrkFace	Brick Face
+       CBlock	Cinder Block
+       CemntBd	Cement Board
+       HdBoard	Hard Board
+       ImStucc	Imitation Stucco
+       MetalSd	Metal Siding
+       Other	Other
+       Plywood	Plywood
+       PreCast	PreCast
+       Stone	Stone
+       Stucco	Stucco
+       VinylSd	Vinyl Siding
+       Wd Sdng	Wood Siding
+       WdShing	Wood Shingles
+	
+MasVnrType: 裝飾類型 Masonry veneer type
+
+       BrkCmn	Brick Common
+       BrkFace	Brick Face
+       CBlock	Cinder Block
+       None	None
+       Stone	Stone
+	
+MasVnrArea: 貼磁磚面積 Masonry veneer area in square feet
+
+ExterQual: 評估外部材料質量 Evaluates the quality of the material on the exterior 
+		
+       Ex	Excellent
+       Gd	Good
+       TA	Average/Typical
+       Fa	Fair
+       Po	Poor
+		
+ExterCond: 外部材料當前情況 Evaluates the present condition of the material on the exterior
+		
+       Ex	Excellent
+       Gd	Good
+       TA	Average/Typical
+       Fa	Fair
+       Po	Poor
+		
+Foundation: 房屋基礎材料 Type of foundation
+		
+       BrkTil	Brick & Tile
+       CBlock	Cinder Block
+       PConc	Poured Contrete	
+       Slab	Slab
+       Stone	Stone
+       Wood	Wood
+		
+BsmtQual: 地下室高度 Evaluates the height of the basement
+
+       Ex	Excellent (100+ inches)	
+       Gd	Good (90-99 inches)
+       TA	Typical (80-89 inches)
+       Fa	Fair (70-79 inches)
+       Po	Poor (<70 inches
+       NA	No Basement
+		
+BsmtCond: 地下室情況評估 Evaluates the general condition of the basement
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical - slight dampness allowed
+       Fa	Fair - dampness or some cracking or settling
+       Po	Poor - Severe cracking, settling, or wetness
+       NA	No Basement
+	
+BsmtExposure: 花園牆壁材料 Refers to walkout or garden level walls
+
+       Gd	Good Exposure
+       Av	Average Exposure (split levels or foyers typically score average or above)	
+       Mn	Mimimum Exposure
+       No	No Exposure
+       NA	No Basement
+	
+BsmtFinType1: 地下室完成區域的等級1 Rating of basement finished area
+
+       GLQ	Good Living Quarters
+       ALQ	Average Living Quarters
+       BLQ	Below Average Living Quarters	
+       Rec	Average Rec Room
+       LwQ	Low Quality
+       Unf	Unfinshed
+       NA	No Basement
+		
+BsmtFinSF1: 地下室完成坪數1 Type 1 finished square feet
+
+BsmtFinType2: 地下室完成區域的等級2 Rating of basement finished area (if multiple types)
+
+       GLQ	Good Living Quarters
+       ALQ	Average Living Quarters
+       BLQ	Below Average Living Quarters	
+       Rec	Average Rec Room
+       LwQ	Low Quality
+       Unf	Unfinshed
+       NA	No Basement
+
+BsmtFinSF2: 地下室完成坪數2 Type 2 finished square feet
+
+BsmtUnfSF: 地下室未完成坪數 Unfinished square feet of basement area
+
+TotalBsmtSF: 地下室總面積 Total square feet of basement area
+
+Heating: 加熱設備形式 Type of heating
+		
+       Floor	Floor Furnace
+       GasA	Gas forced warm air furnace
+       GasW	Gas hot water or steam heat
+       Grav	Gravity furnace	
+       OthW	Hot water or steam heat other than gas
+       Wall	Wall furnace
+		
+HeatingQC: 加熱設備品質 Heating quality and condition
+
+       Ex	Excellent
+       Gd	Good
+       TA	Average/Typical
+       Fa	Fair
+       Po	Poor
+		
+CentralAir: 中央空調 Central air conditioning
+
+       N	No
+       Y	Yes
+		
+Electrical: 電氣系統 Electrical system
+
+       SBrkr	Standard Circuit Breakers & Romex
+       FuseA	Fuse Box over 60 AMP and all Romex wiring (Average)	
+       FuseF	60 AMP Fuse Box and mostly Romex wiring (Fair)
+       FuseP	60 AMP Fuse Box and mostly knob & tube wiring (poor)
+       Mix	Mixed
+		
+1stFlrSF: 一樓坪數 First Floor square feet
+ 
+2ndFlrSF: 二樓坪數 Second floor square feet
+
+LowQualFinSF: 低品質的總坪數 Low quality finished square feet (all floors)
+
+GrLivArea: 地上的屋內坪數 Above grade (ground) living area square feet
+
+BsmtFullBath: 地下室完整浴室 Basement full bathrooms
+
+BsmtHalfBath: 地下室半浴室 Basement half bathrooms
+
+FullBath: 完整浴室 Full bathrooms above grade
+
+HalfBath: 半浴室 Half baths above grade
+
+BedroomAbvGr: 地上房間 Bedrooms above grade (does NOT include basement bedrooms)
+
+KitchenAbvGr: 地上廚房 Kitchens above grade
+
+KitchenQual: 廚房品質 Kitchen quality
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       	
+TotRmsAbvGrd: 地上客房 Total rooms above grade (does not include bathrooms)
+
+Functional: 居家功能 Home functionality (Assume typical unless deductions are warranted)
+
+       Typ	Typical Functionality
+       Min1	Minor Deductions 1
+       Min2	Minor Deductions 2
+       Mod	Moderate Deductions
+       Maj1	Major Deductions 1
+       Maj2	Major Deductions 2
+       Sev	Severely Damaged
+       Sal	Salvage only
+		
+Fireplaces: 壁爐數量 Number of fireplaces
+
+FireplaceQu: 壁爐質量 Fireplace quality
+
+       Ex	Excellent - Exceptional Masonry Fireplace
+       Gd	Good - Masonry Fireplace in main level
+       TA	Average - Prefabricated Fireplace in main living area or Masonry Fireplace in basement
+       Fa	Fair - Prefabricated Fireplace in basement
+       Po	Poor - Ben Franklin Stove
+       NA	No Fireplace
+		
+GarageType: 車庫位置 Garage location
+		
+       2Types	More than one type of garage
+       Attchd	Attached to home
+       Basment	Basement Garage
+       BuiltIn	Built-In (Garage part of house - typically has room above garage)
+       CarPort	Car Port
+       Detchd	Detached from home
+       NA	No Garage
+		
+GarageYrBlt: 車庫建成年份 Year garage was built
+		
+GarageFinish: 車庫內部裝飾 Interior finish of the garage
+
+       Fin	Finished
+       RFn	Rough Finished	
+       Unf	Unfinished
+       NA	No Garage
+		
+GarageCars: 車庫容量 Size of garage in car capacity
+
+GarageArea: 車庫坪數 Size of garage in square feet
+
+GarageQual: 車庫質量 Garage quality
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       NA	No Garage
+		
+GarageCond: 車庫條件 Garage condition
+
+       Ex	Excellent
+       Gd	Good
+       TA	Typical/Average
+       Fa	Fair
+       Po	Poor
+       NA	No Garage
+		
+PavedDrive: 車道材質 Paved driveway
+
+       Y	Paved 
+       P	Partial Pavement
+       N	Dirt/Gravel
+		
+WoodDeckSF: 木地板面積 Wood deck area in square feet
+
+OpenPorchSF: 開放陽台面積 Open porch area in square feet
+
+EnclosedPorch: 封閉門廊面積 Enclosed porch area in square feet
+
+3SsnPorch: 開放門廊面積 Three season porch area in square feet
+
+ScreenPorch: 屏幕門廊面積 Screen porch area in square feet
+
+PoolArea: 泳池面積 Pool area in square feet
+
+PoolQC: 泳池品質 Pool quality
+		
+       Ex	Excellent
+       Gd	Good
+       TA	Average/Typical
+       Fa	Fair
+       NA	No Pool
+		
+Fence: 圍欄質量 Fence quality
+		
+       GdPrv	Good Privacy
+       MnPrv	Minimum Privacy
+       GdWo	Good Wood
+       MnWw	Minimum Wood/Wire
+       NA	No Fence
+	
+MiscFeature: 其他功能 Miscellaneous feature not covered in other categories
+		
+       Elev	Elevator
+       Gar2	2nd Garage (if not described in garage section)
+       Othr	Other
+       Shed	Shed (over 100 SF)
+       TenC	Tennis Court
+       NA	None
+		
+MiscVal: 雜項功能 $Value of miscellaneous feature
+
+MoSold: 售出月份 Month Sold (MM)
+
+YrSold: 售出年份 Year Sold (YYYY)
+
+SaleType: 銷售方式 Type of sale
+		
+       WD 	Warranty Deed - Conventional
+       CWD	Warranty Deed - Cash
+       VWD	Warranty Deed - VA Loan
+       New	Home just constructed and sold
+       COD	Court Officer Deed/Estate
+       Con	Contract 15% Down payment regular terms
+       ConLw	Contract Low Down payment and low interest
+       ConLI	Contract Low Interest
+       ConLD	Contract Low Down
+       Oth	Other
+		
+SaleCondition: 銷售條件 Condition of sale
+
+       Normal	Normal Sale
+       Abnorml	Abnormal Sale -  trade, foreclosure, short sale
+       AdjLand	Adjoining Land Purchase
+       Alloca	Allocation - two linked properties with separate deeds, typically condo with a garage unit	
+       Family	Sale between family members
+       Partial	Home was not completed when last assessed (associated with New Homes)
